@@ -1,0 +1,10 @@
+body{overflow-x: hidden;}
+#hiUser{color:yellow;}
+#content{margin-top: 10em;padding-left: 0; padding-right: 0;}
+#loginRow{height:59vh;}
+a.navbar-brand{width:22%;}
+a.navbar-brand img{width:100%;}
+div.form{width:fit-content;}
+form{text-align: center;}
+
+.centered{text-align: center;}
