@@ -6,19 +6,19 @@ from django.contrib.auth.models import User
 class Coin(models.Model):
     symbol = models.CharField(max_length=10)
     name = models.CharField(max_length=30, primary_key=True)
-    logo = models.CharField(max_length=300)
+    logo = models.CharField(max_length=300, null=True)
     
 class Exchange(models.Model):
     name = models.CharField(max_length=40, primary_key=True)
-    url = models.CharField(max_length=400, null=False)
+    url = models.CharField(max_length=400, null=True)
     logo = models.CharField(max_length=400, null=True)
     
 class Transaction(models.Model):
     class TransactionType(models.Choices):
-        BUY = "Compra"
-        SELL = "Venta"
+        COMPRA = "Buy"
+        VENTA = "Sell"
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, related_name="User", on_delete=models.CASCADE)
     fecha_hora = models.DateTimeField(null=False)
     mount_a = models.FloatField(null=False)
     pair_a = models.CharField(max_length=10, null=False)
@@ -40,9 +40,9 @@ class Transaction(models.Model):
     
 class RawTransaction(models.Model):
     class TransactionType(models.Choices):
-        BUY = "Compra"
-        SELL = "Venta"
-        FEE = "Comision"
+        Compra = "Buy"
+        Venta = "Sell"
+        Comision = "Fee"
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     mount = models.FloatField(null=False)
     pair = models.CharField(max_length=10, null=False)
