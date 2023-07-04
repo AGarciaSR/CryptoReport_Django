@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import TransactionForm
 from django.contrib.auth.models import User
-from .models import Coin, Exchange, Transaction
+from .models import Coin, Exchange, Transaction, RawTransaction
 
 # Create your views here.
 def insert_transaction(request):
@@ -9,9 +9,6 @@ def insert_transaction(request):
         form = TransactionForm(request.POST)
         if form.is_valid():
             # Si no hay ya una Coin creada con el nombre pasado por formulario, la creamos en la base de datos
-            coin_b = Coin()
-            coin_fee = Coin()
-            exchange = Exchange()
             new_transaction = Transaction()
             coin_a = Coin.objects.filter(name=form.cleaned_data['pair_a_name']).first()
             coin_b = Coin.objects.filter(name=form.cleaned_data['pair_b_name']).first()
