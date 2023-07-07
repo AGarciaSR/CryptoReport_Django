@@ -43,7 +43,7 @@ class RawTransaction(models.Model):
         Compra = "Buy"
         Venta = "Sell"
         Comision = "Fee"
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE)
     mount = models.FloatField(null=False)
     pair = models.CharField(max_length=10, null=False)
     pair_name = models.ForeignKey(Coin, on_delete=models.DO_NOTHING)

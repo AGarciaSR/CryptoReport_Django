@@ -26,3 +26,7 @@ class TransactionForm(forms.ModelForm):
         model = Transaction
         exclude = ['user_id', 'pair_a_name', 'pair_b_name', 'coin_fee_name', 'exchange']
         fields = ['fecha_hora','mount_a','pair_a', 'mount_b','pair_b', 't_type','mount_fee','coin_fee', 'pair_b_coin_value', 'coin_fee_value', 'order_value', 'fee_value', 'total_value', 'comment']
+        
+class TransactionCSV(forms.Form):
+    archivo = forms.FileField()    
+    

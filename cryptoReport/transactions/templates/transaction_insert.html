@@ -1,12 +1,21 @@
 {% extends 'base_layout.html' %}
-
+{% load static %}
 {% block content %}
     <div class="row justify-content-center align-items-center">
         <div class="form">
             <form method="post">
                 {% csrf_token %}
                 {{form.as_p}}
-                <input class="btn btn-success" type="submit" value="Enviar datos">
+                <input class="btn btn-success" type="submit" name="single_transaction" value="Enviar datos">
+            </form>
+        </div>
+        <h2>¿Tienes un archivo CSV con los datos necesarios? Súbelo en el siguiente botón</h2>
+        <h5>Si no tienes la plantilla, puedes descargarla <a href="{% static 'assets/import_transactions.csv' %}" target="_blank">aquí</a></h5>
+        <div class="form">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form_bulk.as_p}}
+                <input class="btn btn-success" type="submit" name="bulk_transaction" value="Subir CSV">
             </form>
         </div>
     </div>
