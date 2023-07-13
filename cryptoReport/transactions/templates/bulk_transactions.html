@@ -1,0 +1,36 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+{% block content %}
+    <div class="row justify-content-center align-items-center">
+        <h3 class="centered">Se añadieron {{ number }} transacciones, aquí podrás ver el detalle</h3>
+        <table id="bulk_transactions">
+            <thead>
+                {% for header in headers %}
+                    <th>{{ header }}</th>
+                {% endfor %}
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                    <tr>
+                        <td>{{ transaction.datetime }}</td>
+                        <td>{{ transaction.mount_a }}</td>
+                        <td>{{ transaction.pair_a }}</td>
+                        <td>{{ transaction.pair_a_name }}</td>
+                        <td>{{ transaction.mount_b }}</td>
+                        <td>{{ transaction.pair_b }}</td>
+                        <td>{{ transaction.pair_b_name }}</td>
+                        <td>{{ transaction.type }}</td>
+                        <td>{{ transaction.exchange }}</td>
+                        <td>{{ transaction.mount_fee }}</td>
+                        <td>{{ transaction.coin_fee }}</td>
+                        <td>{{ transaction.coin_fee_name }}</td>
+                        <td>{{ transaction.pair_b_coin_value }}</td>
+                        <td>{{ transaction.order_value }}</td>
+                        <td>{{ transaction.fee_value }}</td>
+                        <td>{{ transaction.total_value }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock  %}

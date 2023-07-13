@@ -7,5 +7,6 @@ a.navbar-brand img{width:100%;}
 div.form{width:fit-content;}
 form{text-align: center;}
 .footer{margin-top:2em;}
+table#bulk_transactions{font-size:0.8em;width:90%;}
 
 .centered{text-align: center;}
