@@ -1,0 +1,49 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+{% block content %}
+    <div class="row justify-content-center align-items-center">
+        <h5>Tienes registradas {{n_trans}} transacciones entre el {{first_trans|date:'d-m-Y'}} y el {{last_trans|date:'d-m-Y'}}</h5>
+        <table id="transactions">
+            <thead>
+                <th>Fecha y hora</th>
+                <th>Comprado</th>
+                <th>Pagado con</th>
+                <th>Comisión</th>
+                <th>Exchange</th>
+            </thead>
+            <tbody>
+                {% for transaction in page_obj %}
+                <tr>
+                    <td>{{ transaction.fecha_hora|date:'Y-m-d H:i:s'}}</td>
+                    {% if transaction.type == 'buy' %}
+                        <td>{{ transaction.mount_a }} {{ transaction.pair_a }}</td>
+                        <td>{{ transaction.mount_b }} {{ transaction.pair_b }}</td>
+                    {% else %}
+                        <td>{{ transaction.mount_b }} {{ transaction.pair_b }}</td>
+                        <td>{{ transaction.mount_a }} {{ transaction.pair_a }}</td>
+                    {% endif %}
+                    <td>{{ transaction.mount_fee }} {{ transaction.coin_fee }}</td>
+                    <td>{{ transaction.exchange.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock  %}

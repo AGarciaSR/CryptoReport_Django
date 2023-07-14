@@ -15,8 +15,8 @@ class Exchange(models.Model):
     
 class Transaction(models.Model):
     class TransactionType(models.Choices):
-        COMPRA = "Buy"
-        VENTA = "Sell"
+        COMPRA = "buy"
+        VENTA = "sell"
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user_id = models.ForeignKey(User, related_name="User", on_delete=models.CASCADE)
     fecha_hora = models.DateTimeField(null=False)
@@ -40,9 +40,9 @@ class Transaction(models.Model):
     
 class RawTransaction(models.Model):
     class TransactionType(models.Choices):
-        Compra = "Buy"
-        Venta = "Sell"
-        Comision = "Fee"
+        Compra = "buy"
+        Venta = "sell"
+        Comision = "fee"
     transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE)
     mount = models.FloatField(null=False)
     pair = models.CharField(max_length=10, null=False)

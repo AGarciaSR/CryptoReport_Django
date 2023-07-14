@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from .forms import TransactionForm, TransactionCSV
 from django.contrib.auth.models import User
@@ -47,3 +48,16 @@ def insert_transaction(request):
         form_bulk = TransactionCSV()
         return render(request, "transaction_insert.html", {"form": form, "form_bulk": form_bulk})
     
+def list_transactions(request):
+    transactions = Transaction.objects.filter(user_id = request.user.id).order_by('-fecha_hora')
+    number_transactions = transactions.count()
+    paginator = Paginator(transactions, 25)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    context = {
+        "page_obj": page_obj,
+        "n_trans": number_transactions,
+        "first_trans": transactions.reverse()[0].fecha_hora,
+        "last_trans": transactions[0].fecha_hora
+    }
+    return render(request, "list_transactions.html", context)
