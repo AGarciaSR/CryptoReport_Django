@@ -1,10 +1,10 @@
 import requests, datetime
 from django.http import HttpResponse
 from django.core.paginator import Paginator
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .forms import TransactionForm, TransactionCSV
 from django.contrib.auth.models import User
-from .models import Coin, Exchange, Transaction, RawTransaction
+from .models import Coin, Exchange, Transaction
 from .functions import handle_transaction_csv, create_transaction
 
 # Create your views here.
@@ -27,13 +27,15 @@ def insert_transaction(request):
                 data["mount_b"] = form.cleaned_data['mount_b']
                 data["mount_fee"] = form.cleaned_data['mount_fee']
                 data["type"] = form.cleaned_data['t_type']
-                data['pair_b_coin_value'] = form.cleaned_data['pair_b_coin_value']
-                data['coin_fee_value'] = form.cleaned_data['coin_fee_value']
-                data['order_value'] = form.cleaned_data['order_value']
-                data['fee_value'] = form.cleaned_data['fee_value']
-                data['total_value'] = form.cleaned_data['total_value']
+                data['pair_a_coin_value'] = 0
+                data['pair_b_coin_value'] = 0
+                data['coin_fee_value'] = 0
+                data['order_value'] = 0
+                data['fee_value'] = 0
+                data['total_value'] = 0
                 data['comment'] = form.cleaned_data['comment']
                 create_transaction(data)
+                return(redirect("list_transactions"))
         elif 'bulk_transaction' in request.POST:
             form = TransactionCSV(request.POST, request.FILES)
             if form.is_valid():
@@ -76,7 +78,9 @@ def request_values(request):
         empty_transactions = Transaction.objects.only('fecha_hora', 'mount_a', 'pair_a', 'mount_b', 'pair_b', 't_type', 'mount_fee', 'coin_fee').filter(user_id = request.user.id, total_value = 0).order_by('fecha_hora')
         user = request.user
         apikey = user.extenduser.coinapi_key
+        t_completed = 0
         headers = {'X-CoinAPI-Key' : apikey}
+        limit_reached = False
         for transaction in empty_transactions:
             pair_b = transaction.pair_b
             fecha_hora = transaction.fecha_hora.strftime("%Y-%m-%dT%H:%M:%S")
@@ -84,33 +88,42 @@ def request_values(request):
             fecha_hora_add = fecha_hora_add.strftime("%Y-%m-%dT%H:%M:%S")
             url = f'https://rest.coinapi.io/v1/exchangerate/{pair_b}/USD/history?period_id=1SEC&time_start={fecha_hora}&time_end={fecha_hora_add}'
             response = requests.get(url, headers=headers)
-            if response.json() != []:
-                transaction.pair_b_coin_value = response.json()[0]["rate_high"]
-            # Si pair_b no está soportada por CoinAPI, hacemos el cálculo en base a pair_a
-            else:
-                pair_a = transaction.pair_a
-                url = f'https://rest.coinapi.io/v1/exchangerate/{pair_a}/USD/history?period_id=1SEC&time_start={fecha_hora}&time_end={fecha_hora_add}'
-                response = requests.get(url, headers=headers)
-                transaction.pair_b_coin_value = (response.json()[0]["rate_high"] * transaction.mount_a) / transaction.mount_b
-            transaction.order_value = transaction.pair_b_coin_value * transaction.mount_b
-            # Si la moneda usada para pagar comisión es la misma que pair_b, no se pide el valor
-            if transaction.coin_fee == pair_b:
-                transaction.coin_fee_value = transaction.pair_b_coin_value
-            else:
-                coin_fee = transaction.coin_fee
-                url = f'https://rest.coinapi.io/v1/exchangerate/{coin_fee}/USD/history?period_id=1SEC&time_start={fecha_hora}&time_end={fecha_hora_add}'
-                response = requests.get(url, headers=headers)
-                transaction.coin_fee_value = response.json()[0]["rate_high"]
-            transaction.fee_value = transaction.coin_fee_value * transaction.mount_fee
-            # Si ha sido una compra, el valor de la comisión se suma al valor de la operación para obtener el costo total
-            if transaction.t_type == "buy":
-                transaction.total_value = transaction.order_value + transaction.fee_value
-            # Si ha sido una venta, el valor de la comisión se resta, ya que se obtuvo un rendimiento menor al retorno de la venta
-            else:
-                transaction.total_value = transaction.order_value - transaction.fee_value
-            transaction.save()
+            if(response.status_code == 200):
+                if response.json() != []:
+                    transaction.pair_b_coin_value = response.json()[0]["rate_high"]
+                # Si pair_b no está soportada por CoinAPI, hacemos el cálculo en base a pair_a
+                else:
+                    pair_a = transaction.pair_a
+                    url = f'https://rest.coinapi.io/v1/exchangerate/{pair_a}/USD/history?period_id=1SEC&time_start={fecha_hora}&time_end={fecha_hora_add}'
+                    response = requests.get(url, headers=headers)
+                    transaction.pair_b_coin_value = (response.json()[0]["rate_high"] * transaction.mount_a) / transaction.mount_b
+                transaction.order_value = transaction.pair_b_coin_value * transaction.mount_b
+                transaction.pair_a_coin_value = transaction.order_value / transaction.mount_a
+                # Si la moneda usada para pagar comisión es la misma que pair_b, no se pide el valor
+                if transaction.coin_fee == pair_b:
+                    transaction.coin_fee_value = transaction.pair_b_coin_value
+                else:
+                    coin_fee = transaction.coin_fee
+                    url = f'https://rest.coinapi.io/v1/exchangerate/{coin_fee}/USD/history?period_id=1SEC&time_start={fecha_hora}&time_end={fecha_hora_add}'
+                    response = requests.get(url, headers=headers)
+                    transaction.coin_fee_value = response.json()[0]["rate_high"]
+                transaction.fee_value = transaction.coin_fee_value * transaction.mount_fee
+                # Si ha sido una compra, el valor de la comisión se suma al valor de la operación para obtener el costo total
+                if transaction.t_type == "buy":
+                    transaction.total_value = transaction.order_value + transaction.fee_value
+                # Si ha sido una venta, el valor de la comisión se resta, ya que se obtuvo un rendimiento menor al retorno de la venta
+                else:
+                    transaction.total_value = transaction.order_value - transaction.fee_value
+                transaction.save()
+                t_completed += 1
+            elif response.status_code == 429:
+                limit_reached = True
+                break
+            
         context = {
             "first_trans": empty_transactions.reverse()[0].fecha_hora,
-            "last_trans": empty_transactions[0].fecha_hora
+            "last_trans": empty_transactions[0].fecha_hora,
+            "t_completed": t_completed,
+            "limit_reached": limit_reached
         }
     return render(request, "request_values.html", context)

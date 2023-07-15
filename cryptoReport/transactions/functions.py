@@ -16,7 +16,7 @@ def handle_transaction_csv(f):
     f.close()
     stats["headers"] = lines[0]
     lines.pop(0)
-    stats["number"] = lines.count()
+    stats["number"] = len(lines)
     i = 0
     for line in lines:
         lines_dict.append(dict(zip(stats["headers"],line)))
@@ -61,6 +61,7 @@ def create_transaction(data):
     new_transaction.mount_fee = data['mount_fee']
     new_transaction.coin_fee = data['coin_fee']
     new_transaction.coin_fee_name = coin_fee
+    new_transaction.pair_a_coin_value = data['pair_a_coin_value']
     new_transaction.pair_b_coin_value = data['pair_b_coin_value']
     new_transaction.coin_fee_value = data['fee_value']
     new_transaction.order_value = data['order_value']

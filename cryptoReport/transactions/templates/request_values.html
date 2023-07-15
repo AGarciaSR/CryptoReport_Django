@@ -2,11 +2,18 @@
 {% load static %}
 {% block content %}
     <div class="row justify-content-center align-items-center">
+        {% if not t_completed %}
         <h5>Tienes {{n_trans}} transacciones pendientes de solicitar su valor, entre el {{first_trans|date:'d-m-Y'}} y el {{last_trans|date:'d-m-Y'}}</h5>
         <h6>¿Quieres realizar requests a CoinAPI?</h6>
         <form method="post">
             {% csrf_token %}
             <input class="btn btn-success" type="submit" name="request_value" value="Solicitar valores">
         </form>
+        {% else %}
+        {% if limit_reached %}
+        <h3>¡Límite diario de solicitudes alcanzado!</h3>
+        {% endif %}
+        <h5>Se han solicitado valores para {{ t_completed }} transacciones, y estarán disponibles para hacer los cálculos</h5>
+        {% endif %}
     </div>
 {% endblock  %}
