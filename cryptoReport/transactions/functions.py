@@ -6,7 +6,6 @@ def handle_transaction_csv(f):
     lines_dict = []
     lines = []
     # Número de transacciones encontradas en el CSV
-    number_t = 0
     for line in f:
         # Por cada línea del archivo csv la pasamos a String, dividimos por ";" y eliminamos el carácter de salto de línea
         new_line = str(line).split(";")
@@ -14,11 +13,10 @@ def handle_transaction_csv(f):
         new_line[0] = new_line[0][2:]
         new_line[-1] = new_line[-1][:-3]
         lines.append(new_line)
-        number_t += 1
     f.close()
-    stats["number"] = number_t
     stats["headers"] = lines[0]
     lines.pop(0)
+    stats["number"] = lines.count()
     i = 0
     for line in lines:
         lines_dict.append(dict(zip(stats["headers"],line)))

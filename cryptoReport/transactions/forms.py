@@ -15,17 +15,12 @@ class TransactionForm(forms.ModelForm):
     mount_fee = forms.FloatField()
     coin_fee = forms.CharField(max_length=10)
     coin_fee_name = forms.CharField(max_length=40)
-    pair_b_coin_value = forms.FloatField(required=False)
-    coin_fee_value = forms.FloatField(required=False)
-    order_value = forms.FloatField(required=False)
-    fee_value = forms.FloatField(required=False)
-    total_value = forms.FloatField(required=False)
     comment = forms.CharField(max_length=200, required=False)
         
     class Meta:
         model = Transaction
-        exclude = ['user_id', 'pair_a_name', 'pair_b_name', 'coin_fee_name', 'exchange']
-        fields = ['fecha_hora','mount_a','pair_a', 'mount_b','pair_b', 't_type','mount_fee','coin_fee', 'pair_b_coin_value', 'coin_fee_value', 'order_value', 'fee_value', 'total_value', 'comment']
+        exclude = ['user_id', 'pair_a_name', 'pair_b_name', 'coin_fee_name', 'exchange', 'pair_b_coin_value', 'coin_fee_value', 'order_value', 'fee_value', 'total_value']
+        fields = ['fecha_hora','mount_a','pair_a', 'mount_b','pair_b', 't_type','mount_fee','coin_fee', 'comment']
         
 class TransactionCSV(forms.Form):
     archivo = forms.FileField()    

@@ -31,11 +31,11 @@ class Transaction(models.Model):
     mount_fee = models.FloatField(null=False)
     coin_fee = models.CharField(max_length=10, null=False)
     coin_fee_name = models.ForeignKey(Coin, related_name="Coin_Fee_name", on_delete=models.DO_NOTHING)
-    pair_b_coin_value = models.FloatField(null=True)
-    coin_fee_value = models.FloatField(null=True)
-    order_value = models.FloatField(null=True)
-    fee_value = models.FloatField(null=True)
-    total_value = models.FloatField(null=True)
+    pair_b_coin_value = models.FloatField(default=0)
+    coin_fee_value = models.FloatField(default=0)
+    order_value = models.FloatField(default=0)
+    fee_value = models.FloatField(default=0)
+    total_value = models.FloatField(default=0)
     comment = models.CharField(max_length=200)
     
 class RawTransaction(models.Model):

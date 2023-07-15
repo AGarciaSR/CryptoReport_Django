@@ -16,8 +16,8 @@ class UserRegisterForm(forms.ModelForm):
     last_name = forms.CharField(label="Apellido", max_length=50, required=True)
     password = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
     email = forms.EmailField()
-    group = forms.ModelChoiceField(queryset=Group.objects.all(), required=True)
+    coinapi_key = forms.CharField(label="CoinAPI key", max_length=50, required=False)
     
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'password', 'email', 'group']
+        fields = ['username', 'first_name', 'last_name', 'password', 'email', 'coinapi_key']

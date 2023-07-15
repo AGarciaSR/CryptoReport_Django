@@ -1,0 +1,12 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+{% block content %}
+    <div class="row justify-content-center align-items-center">
+        <h5>Tienes {{n_trans}} transacciones pendientes de solicitar su valor, entre el {{first_trans|date:'d-m-Y'}} y el {{last_trans|date:'d-m-Y'}}</h5>
+        <h6>¿Quieres realizar requests a CoinAPI?</h6>
+        <form method="post">
+            {% csrf_token %}
+            <input class="btn btn-success" type="submit" name="request_value" value="Solicitar valores">
+        </form>
+    </div>
+{% endblock  %}
