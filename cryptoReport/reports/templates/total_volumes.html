@@ -1,0 +1,25 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+{% block content %}
+    <div class="row justify-content-center align-items-center">
+        <h5>Sus volúmenes totales han sido:</h5>
+        <table id="transactions">
+            <thead>
+                <th>Moneda</th>
+                <th>Volumen de compra</th>
+                <th>Volumen de venta</th>
+                <th>Volumen total</th>
+            </thead>
+            <tbody>
+                {% for volume in volumes %}
+                <tr>
+                    <td>{{ volume.symbol }} ({{ volume.pair_a_name_id }})</td>
+                    <td>{{ volume.volume_buy|floatformat:3 }} USD</td>
+                    <td>{{ volume.volume_sell|floatformat:3 }} USD</td>
+                    <td>{{ volume.total_volume|floatformat:3 }} USD</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock  %}

@@ -121,8 +121,6 @@ def request_values(request):
                 break
             
         context = {
-            "first_trans": empty_transactions.reverse()[0].fecha_hora,
-            "last_trans": empty_transactions[0].fecha_hora,
             "t_completed": t_completed,
             "limit_reached": limit_reached
         }

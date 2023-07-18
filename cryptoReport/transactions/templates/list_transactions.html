@@ -6,24 +6,33 @@
         <table id="transactions">
             <thead>
                 <th>Fecha y hora</th>
-                <th>Comprado</th>
-                <th>Pagado con</th>
-                <th>Comisión</th>
+                <th colspan="2">Comprado</th>
+                <th colspan="2">Pagado con</th>
+                <th colspan="2">Comisión</th>
                 <th>Exchange</th>
+                <th>$ Comisión</th>
+                <th>$ Total orden</th>
             </thead>
             <tbody>
                 {% for transaction in page_obj %}
                 <tr>
                     <td>{{ transaction.fecha_hora|date:'Y-m-d H:i:s'}}</td>
                     {% if transaction.type == 'buy' %}
-                        <td>{{ transaction.mount_a }} {{ transaction.pair_a }}</td>
-                        <td>{{ transaction.mount_b }} {{ transaction.pair_b }}</td>
+                        <td>{{ transaction.mount_a }}</td>
+                        <td>{{ transaction.pair_a }}</td>
+                        <td>{{ transaction.mount_b }}</td>
+                        <td>{{ transaction.pair_b }}</td>
                     {% else %}
-                        <td>{{ transaction.mount_b }} {{ transaction.pair_b }}</td>
-                        <td>{{ transaction.mount_a }} {{ transaction.pair_a }}</td>
+                    <td>{{ transaction.mount_b }}</td>
+                    <td>{{ transaction.pair_b }}</td>
+                    <td>{{ transaction.mount_a }}</td>
+                    <td>{{ transaction.pair_a }}</td>
                     {% endif %}
-                    <td>{{ transaction.mount_fee }} {{ transaction.coin_fee }}</td>
+                    <td>{{ transaction.mount_fee }}</td>
+                    <td>{{ transaction.coin_fee }}</td>
                     <td>{{ transaction.exchange.name }}</td>
+                    <td>{{ transaction.fee_value|floatformat:"-3" }} USD</td>
+                    <td>{{ transaction.total_value|floatformat:"-3" }} USD</th>
                 </tr>
                 {% endfor %}
             </tbody>
