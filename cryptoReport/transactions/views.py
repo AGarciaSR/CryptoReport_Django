@@ -53,6 +53,7 @@ def insert_transaction(request):
     
 def list_transactions(request):
     transactions = Transaction.objects.filter(user_id = request.user.id).order_by('-fecha_hora')
+    num_coins = Transaction.objects.only("pair_a_name").distinct("pair_a_name")
     number_transactions = transactions.count()
     paginator = Paginator(transactions, 25)
     page_number = request.GET.get("page")
@@ -60,6 +61,7 @@ def list_transactions(request):
     context = {
         "page_obj": page_obj,
         "n_trans": number_transactions,
+        "n_coins": len(num_coins),
         "first_trans": transactions.reverse()[0].fecha_hora,
         "last_trans": transactions[0].fecha_hora
     }

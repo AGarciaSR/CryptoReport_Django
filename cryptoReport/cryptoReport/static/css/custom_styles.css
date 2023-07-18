@@ -2,6 +2,7 @@ body{overflow-x: hidden;}
 #hiUser{color:yellow;}
 #content{margin-top: 10em;padding-left: 0; padding-right: 0;}
 #loginRow{height:59vh;}
+nav{background: #1300af;}
 a.navbar-brand{width:22%;}
 a.navbar-brand img{width:100%;}
 div.form{width:fit-content;}
@@ -9,5 +10,12 @@ form{text-align: center;}
 .footer{margin-top:2em;}
 table#transactions{font-size:0.8em;}
 #content{width:90%;}
+.grafico{margin-top:2em;}
+th{background:#83f9ff;}
+td,th{border: 1px solid;}
+tr:nth-child(even) {background-color: #d2d2d2;}
+tr.profit td.result{background: rgb(36, 182, 36);}
+tr.loss td.result{background: rgb(243, 83, 83);}
+td.result{font-weight: bold;font-size:1.1em;}
 
 .centered{text-align: center;}

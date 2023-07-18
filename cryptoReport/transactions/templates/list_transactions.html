@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <div class="row justify-content-center align-items-center">
-        <h5>Tienes registradas {{n_trans}} transacciones entre el {{first_trans|date:'d-m-Y'}} y el {{last_trans|date:'d-m-Y'}}</h5>
+        <h5>Tiene registradas {{n_trans}} transacciones con {{n_coins}} monedas entre el {{first_trans|date:'d-m-Y'}} y el {{last_trans|date:'d-m-Y'}}</h5>
         <table id="transactions">
             <thead>
                 <th>Fecha y hora</th>

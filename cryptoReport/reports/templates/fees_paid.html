@@ -2,25 +2,19 @@
 {% load static %}
 {% block content %}
     <div class="row justify-content-center align-items-center">
-        <h5>Sus volúmenes totales han sido:</h5>
+        <h5>Ha pagado en comisiones:</h5>
         <table id="transactions">
             <thead>
                 <th>Moneda</th>
-                <th>Volumen de compra</th>
-                <th>Volumen de venta</th>
-                <th>Ganancia / Pérdida realizada</th>
+                <th>Monto</th>
+                <th>Valor acumulado</th>
             </thead>
             <tbody>
-                {% for volume in volumes %}
-                {% if volume.total_volume|floatformat:3 > 0.000|floatformat:3 %}
-                <tr class="profit">
-                {% else %}
-                <tr class="loss">
-                {% endif %}
+                {% for fee in fees %}
+                <tr>
                     <td>{{ volume.symbol }} ({{ volume.pair_a_name_id }})</td>
                     <td>{{ volume.volume_buy|floatformat:3 }} USD</td>
                     <td>{{ volume.volume_sell|floatformat:3 }} USD</td>
-                    <td class="result">{{ volume.total_volume|floatformat:3 }} USD</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -33,14 +27,13 @@
                 var data = new google.visualization.arrayToDataTable([
                     ['Coin', 'Volumen de compra', 'Volumen de venta'],
                     {% for volume in volumes %}
-                    ['{{ volume.pair_a_name_id }}', {{ volume.volume_buy|floatformat:2 }}, {{ volume.volume_sell|floatformat:2 }}],
+                    ['{{ volume.pair_a_name_id }}', {{ volume.volume_buy|floatformat:3 }}, {{ volume.volume_sell|floatformat:3 }}],
                     {% endfor %}
                 ]);
                 var options = {
                     title: 'Volúmenes de compra y venta por moneda, en USD',
-                    chartArea: {width: '75%'},
-                    colors: ['#cd1c00', '#01a701'],
-                    height: {% widthratio n_coins 1 25 %},
+                    chartArea: {width: '50%'},
+                    colors: ['#01a701', '#cd1c00'],
                     hAxis: {
                       title: 'Volumen (USD)',
                       minValue: 0
