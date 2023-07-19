@@ -10,7 +10,7 @@ form{text-align: center;}
 .footer{margin-top:2em;}
 table#transactions{font-size:0.8em;}
 #content{width:90%;}
-.grafico{margin-top:2em;}
+.grafico, .hito{margin-top:2em;}
 th{background:#83f9ff;}
 td,th{border: 1px solid;}
 tr:nth-child(even) {background-color: #d2d2d2;}

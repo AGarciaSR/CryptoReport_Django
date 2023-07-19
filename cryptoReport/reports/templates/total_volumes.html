@@ -6,8 +6,8 @@
         <table id="transactions">
             <thead>
                 <th>Moneda</th>
-                <th>Volumen de compra</th>
-                <th>Volumen de venta</th>
+                <th colspan="3">Compras y volumen</th>
+                <th colspan="3">Ventas y volumen</th>
                 <th>Ganancia / Pérdida realizada</th>
             </thead>
             <tbody>
@@ -18,13 +18,18 @@
                 <tr class="loss">
                 {% endif %}
                     <td>{{ volume.symbol }} ({{ volume.pair_a_name_id }})</td>
+                    <td>{{ volume.num_buy }} compra(s)</td>
+                    <td>{{ volume.mount_buy|floatformat:8 }} {{ volume.symbol }}</td>
                     <td>{{ volume.volume_buy|floatformat:3 }} USD</td>
+                    <td>{{ volume.num_sell }} venta(s)</td>
+                    <td>{{ volume.mount_sell|floatformat:8 }} {{ volume.symbol }}</td>
                     <td>{{ volume.volume_sell|floatformat:3 }} USD</td>
                     <td class="result">{{ volume.gainloss|floatformat:3 }} USD</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <p class="hito">Su transacción con mayor volumen tuvo lugar a fecha y hora <b>{{ max_volume.0.fecha_hora|date:'Y-m-d H:i:s' }}</b>, con un importe de <b>{{ max_volume.0.order_value }} USD</b>, en la que <b>{% if max_volume.0.t_type == 'buy' %}compró{% else %}vendió{% endif %} {{ max_volume.0.mount_a }} {{ max_volume.0.pair_a_name_id }}</b> por <b>{{ max_volume.0.mount_b }} {{ max_volume.0.pair_b_name_id }}</b></p>
         <div id="volumenesTotales" class="grafico"></div>
         <script>
             google.charts.setOnLoadCallback(drawBarColors);
