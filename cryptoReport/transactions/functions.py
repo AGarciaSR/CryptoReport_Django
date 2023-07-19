@@ -1,5 +1,5 @@
 import csv
-from .models import Coin, Exchange, Transaction
+from .models import Coin, Exchange, Transaction, RawTransaction
 
 def handle_transaction_csv(f):
     stats = {}
@@ -63,9 +63,54 @@ def create_transaction(data):
     new_transaction.coin_fee_name = coin_fee
     new_transaction.pair_a_coin_value = data['pair_a_coin_value']
     new_transaction.pair_b_coin_value = data['pair_b_coin_value']
-    new_transaction.coin_fee_value = data['fee_value']
+    new_transaction.coin_fee_value = data['coin_fee_value']
     new_transaction.order_value = data['order_value']
     new_transaction.fee_value = data['fee_value']
     new_transaction.total_value = data['total_value']
     new_transaction.comment = data['comment']
     new_transaction.save()
+    
+    if(new_transaction.order_value != 0):
+        create_raw_transactions(new_transaction)
+    
+def create_raw_transactions(transaction):
+    # Crear RawTransactions
+    if transaction.t_type == 'buy':
+        t_type_a = 'buy'
+        t_type_b = 'sell'
+    else:
+        t_type_a = 'sell'
+        t_type_b = 'buy'
+    
+    new_raw_transaction = RawTransaction()
+    new_raw_transaction.user_id = transaction.user_id
+    new_raw_transaction.fecha_hora = transaction.fecha_hora
+    new_raw_transaction.mount_a = transaction.mount_a
+    new_raw_transaction.symbol = transaction.pair_a
+    new_raw_transaction.coin_name = transaction.pair_a_name
+    new_raw_transaction.t_type = t_type_a
+    new_raw_transaction.value = transaction.order_value
+    new_raw_transaction.coin_value = transaction.pair_a_coin_value
+    new_raw_transaction.save()
+    
+    new_raw_transaction = RawTransaction()
+    new_raw_transaction.user_id = transaction.user_id
+    new_raw_transaction.fecha_hora = transaction.fecha_hora
+    new_raw_transaction.mount_a = transaction.mount_b
+    new_raw_transaction.symbol = transaction.pair_b
+    new_raw_transaction.coin_name = transaction.pair_b_name
+    new_raw_transaction.t_type = t_type_b
+    new_raw_transaction.value = transaction.order_value
+    new_raw_transaction.coin_value = transaction.pair_b_coin_value
+    new_raw_transaction.save()
+    
+    new_raw_transaction = RawTransaction()
+    new_raw_transaction.user_id = transaction.user_id
+    new_raw_transaction.fecha_hora = transaction.fecha_hora
+    new_raw_transaction.mount_a = transaction.mount_fee
+    new_raw_transaction.symbol = transaction.coin_fee
+    new_raw_transaction.coin_name = transaction.coin_fee_name
+    new_raw_transaction.t_type = 'fee'
+    new_raw_transaction.value = transaction.fee_value
+    new_raw_transaction.coin_value = transaction.coin_fee_value
+    new_raw_transaction.save()

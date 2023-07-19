@@ -39,3 +39,17 @@ class Transaction(models.Model):
     total_value = models.FloatField(default=0)
     comment = models.CharField(max_length=200)
     
+class RawTransaction(models.Model):
+    class RawTransactionType(models.Choices):
+        COMPRA = "buy"
+        VENTA = "sell"
+        FEE = "fee"
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user_id = models.ForeignKey(User, related_name="User_id", on_delete=models.CASCADE)
+    fecha_hora = models.DateTimeField(null=False)
+    mount_a = models.FloatField(null=False)
+    symbol = models.CharField(max_length=10, null=False)
+    coin_name = models.ForeignKey(Coin, related_name="Coin_name", on_delete=models.DO_NOTHING)
+    t_type = models.CharField(choices=RawTransactionType.choices, null=False)
+    value = models.FloatField(default=0)
+    coin_value = models.FloatField(default=0)

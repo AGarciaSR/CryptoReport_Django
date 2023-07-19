@@ -17,16 +17,16 @@
                 {% for transaction in page_obj %}
                 <tr>
                     <td>{{ transaction.fecha_hora|date:'Y-m-d H:i:s'}}</td>
-                    {% if transaction.type == 'buy' %}
+                    {% if transaction.t_type == 'buy' %}
                         <td>{{ transaction.mount_a }}</td>
                         <td>{{ transaction.pair_a }}</td>
                         <td>{{ transaction.mount_b }}</td>
                         <td>{{ transaction.pair_b }}</td>
                     {% else %}
-                    <td>{{ transaction.mount_b }}</td>
-                    <td>{{ transaction.pair_b }}</td>
-                    <td>{{ transaction.mount_a }}</td>
-                    <td>{{ transaction.pair_a }}</td>
+                        <td>{{ transaction.mount_b }}</td>
+                        <td>{{ transaction.pair_b }}</td>
+                        <td>{{ transaction.mount_a }}</td>
+                        <td>{{ transaction.pair_a }}</td>
                     {% endif %}
                     <td>{{ transaction.mount_fee }}</td>
                     <td>{{ transaction.coin_fee }}</td>

@@ -1,0 +1,24 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+{% block content %}
+    <div class="row justify-content-center align-items-center">
+        <h5>Los valores medios de sus compras y ventas han sido:</h5>
+        <table id="transactions">
+            <thead>
+                <th>Moneda</th>
+                <th>Precio medio de compra</th>
+                <th>Precio medio de venta y comisión</th>
+            </thead>
+            <tbody>
+                {% for dca in dcas %}
+                <tr>
+                    <td>{{ dca.symb }} ({{ dca.coin_name_id }})</td>
+                    <td>{{ dca.dca_buy|floatformat:6 }} USD</td>
+                    <td>{{ dca.dca_sell|floatformat:6 }} USD</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p>Solo se tienen en cuenta los valores de compra, venta y comisión. Las monedas que haya obtenido por minería o ingresos no se verán reflejadas en esta sección</p>
+    </div>
+{% endblock  %}

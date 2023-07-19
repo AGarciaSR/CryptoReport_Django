@@ -4,8 +4,8 @@ from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 from .forms import TransactionForm, TransactionCSV
 from django.contrib.auth.models import User
-from .models import Coin, Exchange, Transaction
-from .functions import handle_transaction_csv, create_transaction
+from .models import Coin, Exchange, Transaction, RawTransaction
+from .functions import handle_transaction_csv, create_transaction, create_raw_transactions
 
 # Create your views here.
 def insert_transaction(request):
@@ -117,6 +117,7 @@ def request_values(request):
                 else:
                     transaction.total_value = transaction.order_value - transaction.fee_value
                 transaction.save()
+                create_raw_transactions(transaction)
                 t_completed += 1
             elif response.status_code == 429:
                 limit_reached = True
