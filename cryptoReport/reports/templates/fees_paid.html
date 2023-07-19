@@ -12,37 +12,32 @@
             <tbody>
                 {% for fee in fees %}
                 <tr>
-                    <td>{{ volume.symbol }} ({{ volume.pair_a_name_id }})</td>
-                    <td>{{ volume.volume_buy|floatformat:3 }} USD</td>
-                    <td>{{ volume.volume_sell|floatformat:3 }} USD</td>
+                    <td>{{ fee.coin_fee }} ({{ fee.coin_fee_name_id }})</td>
+                    <td>{{ fee.mount|floatformat:3 }} {{ fee.coin_fee }}</td>
+                    <td>{{ fee.value|floatformat:3 }} USD</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <div id="volumenesTotales" class="grafico"></div>
+        <div id="comisionesPagadas" class="grafico"></div>
         <script>
-            google.charts.setOnLoadCallback(drawBarColors);
-            function drawBarColors() {
-                // Define the chart to be drawn.
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
                 var data = new google.visualization.arrayToDataTable([
-                    ['Coin', 'Volumen de compra', 'Volumen de venta'],
-                    {% for volume in volumes %}
-                    ['{{ volume.pair_a_name_id }}', {{ volume.volume_buy|floatformat:3 }}, {{ volume.volume_sell|floatformat:3 }}],
+                    ['Coin', 'Valor acumulado'],
+                    {% for fee in fees %}
+                        {% if fee.value|floatformat:3 > 0.000|floatformat:3 %}
+                        ['{{ fee.coin_fee_name_id }}', {{ fee.value|floatformat:3 }}],
+                        {% endif %}
                     {% endfor %}
                 ]);
                 var options = {
-                    title: 'Volúmenes de compra y venta por moneda, en USD',
-                    chartArea: {width: '50%'},
-                    colors: ['#01a701', '#cd1c00'],
-                    hAxis: {
-                      title: 'Volumen (USD)',
-                      minValue: 0
-                    },
-                    vAxis: {
-                      title: 'Moneda'
-                    }
+                    title: 'Comisiones pagadas por moneda, en USD',
+                    chartArea: {width: '75%'},
+                    height: 700,
+                    is3D: true,
                   };
-                  var chart = new google.visualization.BarChart(document.getElementById('volumenesTotales'));
+                  var chart = new google.visualization.PieChart(document.getElementById('comisionesPagadas'));
                   chart.draw(data, options);
             }
           </script>

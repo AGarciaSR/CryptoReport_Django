@@ -20,7 +20,7 @@
                     <td>{{ volume.symbol }} ({{ volume.pair_a_name_id }})</td>
                     <td>{{ volume.volume_buy|floatformat:3 }} USD</td>
                     <td>{{ volume.volume_sell|floatformat:3 }} USD</td>
-                    <td class="result">{{ volume.total_volume|floatformat:3 }} USD</td>
+                    <td class="result">{{ volume.gainloss|floatformat:3 }} USD</td>
                 </tr>
                 {% endfor %}
             </tbody>
