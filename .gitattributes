@@ -1,3 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-cryptoReport/cryptoReport/static/assets/css/styles.css linguist-vendored
+cryptoReport/cryptoReport/static/css/styles.css linguist-vendored
+cryptoReport/cryptoReport/static/vendored linguist-vendored

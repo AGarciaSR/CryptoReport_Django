@@ -2,380 +2,392 @@
 {% load static %}
 {% block cotitle %} Página principal {% endblock %}
 {% block content %}
-    <!-- Masthead-->
-    <header class="masthead bg-primary text-white text-center">
-        <div class="container d-flex align-items-center flex-column">
-            <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" src="{% static 'assets/img/avataaars.svg' %}" alt="..." />
-            <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
-            <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+<main class="main-content" id="main-content">
+    <!--page-hero-->
+    <section class="bg-dark text-white position-relative overflow-hidden">
+        <!--begin:Video-bg-->
+        <div class="w-100 h-100 opacity-25 position-absolute end-0 top-0 bg-cover bg-no-repeat bg-center"
+            style="background-image: url('{% static vendored/videos/officeloop-cover.jpg');">
+            <div class="jarallax h-100 w-100" data-video-src="mp4:{% static 'vendored/videos/trading.mp4' %}">
             </div>
-            <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
         </div>
-    </header>
-    <!-- Portfolio Section-->
-    <section class="page-section portfolio" id="portfolio">
-        <div class="container">
-            <!-- Portfolio Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+        <!--end:Video-bg-->
+
+        <!--begin:container-->
+        <div class="container pt-12 pb-12 position-relative z-1">
+            <div class="row pt-lg-9 pb-lg-5 align-items-center">
+                <div class="col-lg-8 mx-auto text-center mb-5 mb-lg-0">
+                    <!--begin:swiper text-slider-->
+                    <div
+                        class="swiper-container swiper-text w-100 height-3x fs-5 fw-bold text-uppercase mb-3 text-white overflow-hidden">
+                        <!--begin:Slider wrapper-->
+                        <div class="swiper-wrapper text-warning">
+                            <!--Slide item-->
+                            <div class="swiper-slide justify-content-center">
+                                Design anything
+                            </div>
+                            <!--Slide item-->
+                            <div class="swiper-slide justify-content-center">
+                                Built for developers
+                            </div>
+                            <!--Slide item-->
+                            <div class="swiper-slide justify-content-center">
+                                Built for everyone
+                            </div>
+                            <!--Slide item-->
+                            <div class="swiper-slide justify-content-center">
+                                Mobile friendly
+                            </div>
+                            <!--Slide item-->
+                            <div class="swiper-slide justify-content-center">
+                                Best selling theme
+                            </div>
+                        </div>
+                        <!--end:Slider wrapper-->
+
+                    </div>
+                    <!--end:swiper text-slider-->
+
+                    <!--Hero title-->
+                    <h1 class="display-1 mb-4 mb-lg-5">
+                        We build <span class="text-gradient-light">cutting edge</span> websites
+                    </h1>
+
+                    <!--Hero description-->
+                    <p class="mb-5 mb-lg-7 lead w-lg-60 mx-auto">
+                        Lorem ipsum is placeholder text commonly used in the graphic, print industries.
+                    </p>
+
+                    <!--Hero action button-->
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a href="#section" class="btn btn-primary btn-lg me-2 me-lg-3">Get started</a>
+                    </div>
+                </div>
             </div>
-            <!-- Portfolio Grid Items-->
+        </div>
+        <!--end:container-->
+
+        <!--begin:Divider shape-->
+        <svg class="position-absolute start-0 bottom-0 mb-n1" style="color:var(--bs-body-bg)" preserveAspectRatio="none" width="100%"
+            height="80" viewBox="0 0 1460 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M122 22.8261L0 0V120H1460V0L1338 22.8261C1217 44.1304 973 88.2609 730 88.2609C487 88.2609 243 44.1304 122 22.8261Z"
+                fill="currentColor"></path>
+        </svg>
+        <!--end:Divider shape-->
+    </section>
+    <!--/section-->
+    <section class="position-relative" id="section">
+        <div class="container py-9 py-lg-11 position-relative">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6 col-xl-5 order-lg-last mb-7 mb-lg-0">
+                    <!--Heading-->
+                    <h2 class="position-relative mb-5 display-5" data-aos="fade-up">
+                        We believe in <span class="text-gradient">timeless</span> authentic design
+                    </h2>
+                    <!--text-->
+                    <p class="mb-0 lead" data-aos="fade-up" data-aos-delay="100">
+                        Lorem ipsum dolor sit amet, eiusmod tempor quis nostrud
+                        exercitation ullamco commodo consequat.
+                    </p>
+                </div>
+                <div class="col-lg-6 col-xl-5 order-lg-1">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center mb-5" data-aos="fade-up">
+                            <!--Numbers card-->
+                            <div class="position-relative pb-2 rounded-4 overflow-hidden bg-body">
+                                <!--Numbers card bg-->
+                                <div
+                                    class="position-absolute start-50 translate-middle-x bottom-0 bg-primary rounded-4 w-75 h-75">
+                                </div>
+                                <div class="position-relative bg-body-tertiary p-4 rounded-4">
+                                    <h2 class="display-5" data-aos
+                                        data-countup='{"startVal":0,"suffix":"+","duration":"5"}' data-to="6750"
+                                        data-aos-id="countup:in">0</h2>
+                                    <h6 class="mb-0">Copies sold</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                            <!--Numbers card-->
+                            <div class="position-relative pb-2 rounded-4 overflow-hidden bg-body">
+                                <!--Numbers card bg-->
+                                <div
+                                    class="position-absolute start-50 translate-middle-x bottom-0 bg-danger rounded-4 w-75 h-75">
+                                </div>
+                                <div class="position-relative bg-body-tertiary p-4 rounded-4">
+                                    <h2 class="display-5" data-aos
+                                        data-countup='{"startVal":0,"suffix":"+","duration":"5"}' data-to="500"
+                                        data-aos-id="countup:in">0</h2>
+                                    <h6 class="mb-0">Ui elements</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-5 mb-md-0 text-center" data-aos="fade-up" data-aos-delay="150">
+                            <!--Numbers card-->
+                            <div class="position-relative pb-2 rounded-4 overflow-hidden bg-body">
+                                <!--Numbers card bg-->
+                                <div
+                                    class="position-absolute start-50 translate-middle-x bottom-0 bg-warning rounded-4 w-75 h-75">
+                                </div>
+                                <div class="position-relative bg-body-tertiary p-4 rounded-4">
+                                    <h2 class="display-5" data-aos
+                                        data-countup='{"startVal":0,"suffix":"+","duration":"5"}' data-to="250"
+                                        data-aos-id="countup:in">0</h2>
+                                    <h6 class="mb-0">Valid layouts</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center" data-aos="fade-up">
+                            <!--Numbers card-->
+                            <div class="position-relative pb-2 rounded-4 overflow-hidden bg-body"
+                                data-aos-delay="200">
+                                <!--Numbers card bg-->
+                                <div
+                                    class="position-absolute start-50 translate-middle-x bottom-0 bg-success rounded-4 w-75 h-75">
+                                </div>
+                                <div class="position-relative bg-body-tertiary p-4 rounded-4">
+                                    <h2 class="display-5" data-aos
+                                        data-countup='{"startVal":0,"suffix":"+","duration":"5"}' data-to="15"
+                                        data-aos-id="countup:in">0</h2>
+                                    <h6 class="mb-0">Pre-built demos</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--begin:feature image section-->
+    <section class="position-relative">
+        <div class="container position-relative py-9 py-lg-11">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0 order-lg-last" data-aos="fade-up" data-aos-delay="50">
+                    <div class="position-relative p-2">
+                        <!--background-parallax-shape-->
+                        <div class="rellax bg-warning width-9x height-9x rounded-circle position-absolute end-0 top-0"
+                            data-rellax-percentage="0.95" data-rellax-speed="2"></div>
+                        <!--background-parallax-shape-->
+                        <div class="rellax bg-danger width-5x height-5x rounded-circle position-absolute bottom-0 mb-5 start-0"
+                            data-rellax-percentage="0.1" data-rellax-speed="-1"></div>
+
+                        <!--Shape Image with mask-->
+                        <div class="bg-mask">
+                            <img src="{% static 'vendored/img/960x900/4.jpg' %}" class="mask-squircle mask-image" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-lg-1 position-relative" data-aos="fade-up" data-aos-delay="100">
+                    <!--Heading-->
+                    <h2 class="mb-4 display-5">Build your <span class="text-gradient">unique</span>
+                        online presence</h2>
+
+                        <!--Text-->
+                    <p class="mb-5">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <!--Feature-card-->
+                    <div class="d-flex mb-4">
+                        <div class="me-3 mt-1">
+                            <i class="bx bx-check-circle fs-4"></i>
+                        </div>
+                        <div>
+                            <p class="mb-0">
+                                Viverra nam libero justo laoreet uscipit adipiscing bibendum est ultricies
+                                integer.
+                            </p>
+                        </div>
+                    </div>
+                    <!--Feature-card-->
+                    <div class="d-flex">
+                        <div class="me-3 mt-1">
+                            <i class="bx bx-check-circle fs-4"></i>
+                        </div>
+                        <div>
+                            <p class="mb-0">
+                                Viverra nam libero justo laoreet uscipit adipiscing bibendum est ultricies
+                                integer.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end:feature image section-->
+    <!--begin:feature icons section-->
+    <section class="overflow-hidden bg-body position-relative">
+        <div class="container position-relative py-9 py-lg-11">
+            <h2 class="display-5 text-center mb-5">Our <span class="text-gradient">Benefits</span></h2>
+            <!--feature icons row-->
             <div class="row justify-content-center">
-                <!-- Portfolio Item 1-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="{% static 'assets/img/portfolio/cabin.png' %}" alt="..." />
+                <div class="col-md-6 text-center mb-4" data-aos="fade-up" data-aos-delay="50">
+                    <!--Icon card-->
+                    <div class="card card-body py-5 px-4 border-0 shadow-lg hover-lift hover-shadow-xl">
+                        <!--Feature icon-->
+                    <div class="mb-4 mx-auto width-10x height-10x flex-center position-relative">
+                        <!--Icon bg-->
+                        <svg class="position-absolute text-primary start-0 top-0 w-100 h-100"
+                            preserveAspectRatio="none" width="120" height="120" viewBox="0 0 120 120"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M55.4078 1.90215C58.3481 0.684225 61.6519 0.684225 64.5922 1.90215L97.8342 15.6714C100.775 16.8894 103.111 19.2255 104.329 22.1658L118.098 55.4078C119.316 58.3481 119.316 61.6519 118.098 64.5922L104.329 97.8342C103.111 100.775 100.775 103.111 97.8342 104.329L64.5922 118.098C61.6519 119.316 58.3481 119.316 55.4078 118.098L22.1658 104.329C19.2255 103.111 16.8894 100.775 15.6714 97.8342L1.90215 64.5922C0.684225 61.6519 0.684225 58.3481 1.90215 55.4078L15.6714 22.1658C16.8894 19.2255 19.2255 16.8894 22.1658 15.6714L55.4078 1.90215Z"
+                                fill="currentColor" />
+                        </svg>
+                        <!--Icon-->
+                        <i class="icon-Idea-3 fs-1 text-white position-relative"></i>
+                    </div>
+                    <div class="d-flex align-items-center mb-3 justify-content-center">
+                        <h5 class="mb-0">Creative & elegant</h5>
+                    </div>
+                    <p class="mb-0 w-lg-75 mx-auto">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                    </p>
                     </div>
                 </div>
-                <!-- Portfolio Item 2-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="{% static 'assets/img/portfolio/cake.png' %}" alt="..." />
+                <div class="col-md-6 text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card card-body py-5 px-4 border-0 shadow-lg hover-lift hover-shadow-xl">
+                        <!--Feature icon-->
+                    <div class="mb-4 mx-auto width-10x height-10x flex-center position-relative">
+                        <!--Icon bg-->
+                        <svg class="position-absolute text-primary start-0 top-0 w-100 h-100"
+                            preserveAspectRatio="none" width="120" height="120" viewBox="0 0 120 120"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M55.4078 1.90215C58.3481 0.684225 61.6519 0.684225 64.5922 1.90215L97.8342 15.6714C100.775 16.8894 103.111 19.2255 104.329 22.1658L118.098 55.4078C119.316 58.3481 119.316 61.6519 118.098 64.5922L104.329 97.8342C103.111 100.775 100.775 103.111 97.8342 104.329L64.5922 118.098C61.6519 119.316 58.3481 119.316 55.4078 118.098L22.1658 104.329C19.2255 103.111 16.8894 100.775 15.6714 97.8342L1.90215 64.5922C0.684225 61.6519 0.684225 58.3481 1.90215 55.4078L15.6714 22.1658C16.8894 19.2255 19.2255 16.8894 22.1658 15.6714L55.4078 1.90215Z"
+                                fill="currentColor" />
+                        </svg>
+                        <!--Icon-->
+                        <i class="icon-Code-Window text-white fs-2 position-relative"></i>
+                    </div>
+
+                    <!--Feature Text-->
+                    <div class="d-flex align-items-center mb-3 justify-content-center">
+                        <h5 class="mb-0">Reusable components</h5>
+                    </div>
+                    <p class="mb-0 w-lg-75 mx-auto">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                    </p>
                     </div>
                 </div>
-                <!-- Portfolio Item 3-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="{% static 'assets/img/portfolio/circus.png' %}" alt="..." />
+                <div class="col-md-6 text-center mb-4" data-aos="fade-up" data-aos-delay="150">
+
+                    <div class="card card-body py-5 px-4 border-0 shadow-lg hover-lift hover-shadow-xl">
+                        <!--Feature icon-->
+                    <div class="mb-4 mx-auto width-10x height-10x flex-center position-relative">
+                        <!--Icon bg-->
+                        <svg class="position-absolute text-primary start-0 top-0 w-100 h-100"
+                            preserveAspectRatio="none" width="120" height="120" viewBox="0 0 120 120"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M55.4078 1.90215C58.3481 0.684225 61.6519 0.684225 64.5922 1.90215L97.8342 15.6714C100.775 16.8894 103.111 19.2255 104.329 22.1658L118.098 55.4078C119.316 58.3481 119.316 61.6519 118.098 64.5922L104.329 97.8342C103.111 100.775 100.775 103.111 97.8342 104.329L64.5922 118.098C61.6519 119.316 58.3481 119.316 55.4078 118.098L22.1658 104.329C19.2255 103.111 16.8894 100.775 15.6714 97.8342L1.90215 64.5922C0.684225 61.6519 0.684225 58.3481 1.90215 55.4078L15.6714 22.1658C16.8894 19.2255 19.2255 16.8894 22.1658 15.6714L55.4078 1.90215Z"
+                                fill="currentColor" />
+                        </svg>
+                        <!--Icon-->
+                        <i class="icon-Layer-Forward text-white fs-1 position-relative"></i>
+                    </div>
+
+                    <!--Feature Text-->
+                    <div class="d-flex align-items-center mb-3 justify-content-center">
+                        <h5 class="mb-0">Unlimited features</h5>
+                    </div>
+                    <p class="mb-0 w-lg-75 mx-auto">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                    </p>
                     </div>
                 </div>
-                <!-- Portfolio Item 4-->
-                <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="{% static 'assets/img/portfolio/game.png' %}" alt="..." />
+                <div class="col-md-6 text-center mb-4" data-aos="fade-up" data-aos-delay="200">
+
+                    <div class="card card-body py-5 px-4 border-0 shadow-lg hover-lift hover-shadow-xl">
+                        <!--Feature icon-->
+                    <div class="mb-4 mx-auto width-10x height-10x flex-center position-relative">
+                        <!--Icon bg-->
+                        <svg class="position-absolute text-primary start-0 top-0 w-100 h-100"
+                            preserveAspectRatio="none" width="120" height="120" viewBox="0 0 120 120"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M55.4078 1.90215C58.3481 0.684225 61.6519 0.684225 64.5922 1.90215L97.8342 15.6714C100.775 16.8894 103.111 19.2255 104.329 22.1658L118.098 55.4078C119.316 58.3481 119.316 61.6519 118.098 64.5922L104.329 97.8342C103.111 100.775 100.775 103.111 97.8342 104.329L64.5922 118.098C61.6519 119.316 58.3481 119.316 55.4078 118.098L22.1658 104.329C19.2255 103.111 16.8894 100.775 15.6714 97.8342L1.90215 64.5922C0.684225 61.6519 0.684225 58.3481 1.90215 55.4078L15.6714 22.1658C16.8894 19.2255 19.2255 16.8894 22.1658 15.6714L55.4078 1.90215Z"
+                                fill="currentColor" />
+                        </svg>
+                        <!--Icon-->
+                        <i class="icon-Coffee-toGo text-white fs-1 position-relative"></i>
+                    </div>
+
+                    <!--Feature Text-->
+                    <div class="d-flex align-items-center mb-3 justify-content-center">
+                        <h5 class="mb-0">Modern build tools</h5>
+                    </div>
+                    <p class="mb-0 w-lg-75 mx-auto">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                    </p>
                     </div>
                 </div>
-                <!-- Portfolio Item 5-->
-                <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="{% static 'assets/img/portfolio/safe.png' %}" alt="..." />
+                <div class="col-md-6 text-center mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="250">
+
+                   <div class="card card-body py-5 px-4 border-0 shadow-lg hover-lift hover-shadow-xl">
+                     <!--Feature icon-->
+                     <div class="mb-4 mx-auto width-10x height-10x flex-center position-relative">
+                        <!--Icon bg-->
+                        <svg class="position-absolute text-primary start-0 top-0 w-100 h-100"
+                            preserveAspectRatio="none" width="120" height="120" viewBox="0 0 120 120"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M55.4078 1.90215C58.3481 0.684225 61.6519 0.684225 64.5922 1.90215L97.8342 15.6714C100.775 16.8894 103.111 19.2255 104.329 22.1658L118.098 55.4078C119.316 58.3481 119.316 61.6519 118.098 64.5922L104.329 97.8342C103.111 100.775 100.775 103.111 97.8342 104.329L64.5922 118.098C61.6519 119.316 58.3481 119.316 55.4078 118.098L22.1658 104.329C19.2255 103.111 16.8894 100.775 15.6714 97.8342L1.90215 64.5922C0.684225 61.6519 0.684225 58.3481 1.90215 55.4078L15.6714 22.1658C16.8894 19.2255 19.2255 16.8894 22.1658 15.6714L55.4078 1.90215Z"
+                                fill="currentColor" />
+                        </svg>
+                        <!--Icon-->
+                        <i class="icon-Consulting fs-1 text-white position-relative"></i>
                     </div>
+
+                    <!--Feature Text-->
+                    <div class="d-flex align-items-center mb-3 justify-content-center">
+                        <h5 class="mb-0">Instant support</h5>
+                    </div>
+                    <p class="mb-0 w-lg-75 mx-auto">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                    </p>
+                   </div>
                 </div>
-                <!-- Portfolio Item 6-->
-                <div class="col-md-6 col-lg-4">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="{% static 'assets/img/portfolio/submarine.png' %}" alt="..." />
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card card-body py-5 px-4 border-0 shadow-lg hover-lift hover-shadow-xl">
+                        
+                    <!--Feature icon-->
+                    <div class="mb-4 mx-auto width-10x height-10x flex-center position-relative">
+                        <!--Icon bg-->
+                        <svg class="position-absolute text-primary start-0 top-0 w-100 h-100"
+                            preserveAspectRatio="none" width="120" height="120" viewBox="0 0 120 120"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M55.4078 1.90215C58.3481 0.684225 61.6519 0.684225 64.5922 1.90215L97.8342 15.6714C100.775 16.8894 103.111 19.2255 104.329 22.1658L118.098 55.4078C119.316 58.3481 119.316 61.6519 118.098 64.5922L104.329 97.8342C103.111 100.775 100.775 103.111 97.8342 104.329L64.5922 118.098C61.6519 119.316 58.3481 119.316 55.4078 118.098L22.1658 104.329C19.2255 103.111 16.8894 100.775 15.6714 97.8342L1.90215 64.5922C0.684225 61.6519 0.684225 58.3481 1.90215 55.4078L15.6714 22.1658C16.8894 19.2255 19.2255 16.8894 22.1658 15.6714L55.4078 1.90215Z"
+                                fill="currentColor" />
+                        </svg>
+                        <!--Icon-->
+                        <i class="icon-Coding fs-1 text-white position-relative"></i>
+                    </div>
+
+                    <!--Feature Text-->
+                    <div class="d-flex align-items-center mb-3 justify-content-center">
+                        <h5 class="mb-0">Valid code</h5>
+                    </div>
+                    <p class="mb-0 w-lg-75 mx-auto">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                    </p>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
-    <!-- About Section-->
-    <section class="page-section bg-primary text-white mb-0" id="about">
-        <div class="container">
-            <!-- About Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- About Section Content-->
-            <div class="row">
-                <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-                <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
-            </div>
-            <!-- About Section Button-->
-            <div class="text-center mt-4">
-                <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
-                    <i class="fas fa-download me-2"></i>
-                    Free Download!
-                </a>
-            </div>
-        </div>
-    </section>
-    <!-- Contact Section-->
-    <section class="page-section" id="contact">
-        <div class="container">
-            <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Contact Section Form-->
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-xl-7">
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- * * SB Forms Contact Form * *-->
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- This form is pre-integrated with SB Forms.-->
-                    <!-- To make this form functional, sign up at-->
-                    <!-- https://startbootstrap.com/solution/contact-forms-->
-                    <!-- to get an API token!-->
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                        <!-- Name input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                            <label for="name">Full name</label>
-                            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                        </div>
-                        <!-- Email address input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                            <label for="email">Email address</label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                        </div>
-                        <!-- Phone number input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                            <label for="phone">Phone number</label>
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                        </div>
-                        <!-- Message input-->
-                        <div class="form-floating mb-3">
-                            <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                            <label for="message">Message</label>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                        </div>
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Form submission successful!</div>
-                                To activate this form, sign up at
-                                <br />
-                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                            </div>
-                        </div>
-                        <!-- Submit error message-->
-                        <!---->
-                        <!-- This is what your users will see when there is-->
-                        <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                        <!-- Submit Button-->
-                        <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Portfolio Modals-->
-    <!-- Portfolio Modal 1-->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-                                <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5" src="{% static 'assets/img/portfolio/cabin.png' %}" alt="..." />
-                                <!-- Portfolio Modal - Text-->
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i>
-                                    Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Portfolio Modal 2-->
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-                                <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5" src="{% static 'assets/img/portfolio/cake.png' %}" alt="..." />
-                                <!-- Portfolio Modal - Text-->
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i>
-                                    Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Portfolio Modal 3-->
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-                                <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5" src="{% static 'assets/img/portfolio/circus.png' %}" alt="..." />
-                                <!-- Portfolio Modal - Text-->
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i>
-                                    Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Portfolio Modal 4-->
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Controller</h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-                                <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5" src="{% static 'assets/img/portfolio/game.png' %}" alt="..." />
-                                <!-- Portfolio Modal - Text-->
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i>
-                                    Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Portfolio Modal 5-->
-    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Locked Safe</h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-                                <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5" src="{% static 'assets/img/portfolio/safe.png' %}" alt="..." />
-                                <!-- Portfolio Modal - Text-->
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i>
-                                    Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Portfolio Modal 6-->
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Submarine</h2>
-                                <!-- Icon Divider-->
-                                <div class="divider-custom">
-                                    <div class="divider-custom-line"></div>
-                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                    <div class="divider-custom-line"></div>
-                                </div>
-                                <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5" src="{% static 'assets/img/portfolio/submarine.png' %}" alt="..." />
-                                <!-- Portfolio Modal - Text-->
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i>
-                                    Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</main>
 {% endblock %}

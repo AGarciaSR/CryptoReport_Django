@@ -3,7 +3,7 @@
 {% block content %}
     <div class="row justify-content-center align-items-center">
         {% if not t_completed %}
-        <h5>Tienes {{n_trans}} transacciones pendientes de solicitar su valor, entre el {{first_trans|date:'d-m-Y'}} y el {{last_trans|date:'d-m-Y'}}</h5>
+        <h5>Tienes {{n_trans}} transacci{{ n_trans|pluralize:"ón,ones" }} pendiente{{ n_trans|pluralize }} de solicitar su valor, entre el {{first_trans|date:'d-m-Y'}} y el {{last_trans|date:'d-m-Y'}}</h5>
         <h6>¿Quieres realizar requests a CoinAPI?</h6>
         <form method="post">
             {% csrf_token %}
