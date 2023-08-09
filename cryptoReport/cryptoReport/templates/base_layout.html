@@ -15,6 +15,7 @@
         <link href="{% static 'vendored/css/theme.min.css' %}" rel="stylesheet">
         <title>CryptoReport - {% block cotitle %}{% endblock %}</title>
         <link href="{% static 'css/custom_styles.css' %}" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
         <script src="https://www.gstatic.com/charts/loader.js"></script>
         <script>
             google.charts.load('current', {packages: ['corechart']});
@@ -27,7 +28,11 @@
             <span class="small d-block ms-2">Loading...</span>
         </div>
         <!--Header Start-->
+        {% if  request.path == "/" %}
         <header class="z-fixed header-transparent header-absolute-top header-sticky">
+        {% else %}
+        <header class="z-fixed header-transparent header-absolute-top header-sticky is-sticky">
+        {% endif %}
             <nav class="navbar navbar-expand-lg navbar-light navbar-link-white">
                 <div class="container position-relative">
                     <a class="navbar-brand" href="{% url 'index' %}">
@@ -112,47 +117,6 @@
             <div class="row">
                 <!--Footer col-->
                 <div class="col-lg-5 col-md-7 col-xl-4 mb-7">
-                        <!--:Dark Mode:-->
-                        <div class="d-inline-flex width-13x align-items-center dropup mt-6">
-                            <button class="btn border text-body py-2 px-2 d-flex align-items-center"
-                                id="assan-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown"
-                                data-bs-display="static">
-                                <span class="theme-icon-active d-flex align-items-center">
-                                    <i class="bx align-middle"></i>
-                                </span>
-                            </button>
-                            <!--:Dark Mode Options:-->
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="assan-theme" style="--bs-dropdown-min-width: 9rem;">
-                                <li class="mb-1">
-                                    <button type="button" class="dropdown-item d-flex align-items-center active"
-                                        data-bs-theme-value="light">
-                                        <span class="theme-icon d-flex align-items-center">
-                                            <i class="bx bx-sun align-middle me-2"> </i>
-                                        </span>
-                                        Light
-                                    </button>
-                                </li>
-                                <li class="mb-1">
-                                    <button type="button" class="dropdown-item d-flex align-items-center"
-                                        data-bs-theme-value="dark">
-                                        <span class="theme-icon d-flex align-items-center">
-                                            <i class="bx bx-moon align-middle me-2"></i>
-                                        </span>
-                                        Dark
-                                    </button>
-                                </li>
-                                <li>
-                                    <button type="button" class="dropdown-item d-flex align-items-center"
-                                        data-bs-theme-value="auto">
-                                        <span class="theme-icon d-flex align-items-center">
-                                            <i class="bx bx-color-fill align-middle me-2"></i>
-                                        </span>
-                                        Auto
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
             <hr class="mb-5 mt-0">
@@ -175,38 +139,8 @@
             #content{margin-top:10em;width:90%;}
         </style>
     {% endif %}
-        <!-- begin:main script -->
-        <script src="{% static 'vendored/js/theme.bundle.min.js' %}"></script>
-        <!-- end:main script -->
-
-        <!--begin:Swiper slider-->
+        <script src="{% static 'vendored/js/theme.bundle.js' %}"></script>
         <script src="{% static 'vendored/vendor/node_modules/js/swiper-bundle.min.js' %}"></script>
-        <script>
-            //swiper-testimonials
-            var swiperAuto = new Swiper(".swiper-testimonials", {
-                slidesPerView: "auto",
-                loop: true,
-                centeredSlides: true,
-                spaceBetween: 16,
-                pagination: {
-                    el: ".swiperAuto-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiperAuto-button-next",
-                    prevEl: ".swiperAuto-button-prev",
-                }
-            });
-            
-            //Swiper for text/headings
-            var swiperText = new Swiper(".swiper-text", {
-                autoplay: true,
-                direction: "vertical",
-                loop: true,
-                grabCursor: false,
-                speed: 600
-            });
-
-        </script>
+        <script src="{% static 'js/functions.js' %}"></script>
     </body>
 </html>

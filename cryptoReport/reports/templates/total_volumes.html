@@ -1,8 +1,25 @@
 {% extends 'base_layout.html' %}
 {% load static %}
 {% block content %}
-    <div class="row justify-content-center align-items-center">
-        <h5>Sus volúmenes totales han sido:</h5>
+    <div class="row">
+        <div style="width:fit-content; margin-bottom: 2em;">
+            <h5>Sus volúmenes totales han sido:</h5>
+            <h6>Ordenar resultados por:</h6>
+            <select id="orderTotalVolumes">
+                <option id="ordering2" value="2">Symbol</option>
+                <option id="ordering3" value="3">Nombre</option>
+                <option id="ordering5" value="5">Número de compras</option>
+                <option id="ordering6" value="6">Número de ventas</option>
+                <option id="ordering8" value="8">Volumen de compra</option>
+                <option id="ordering9" value="9">Volumen de venta</option>
+                <option id="ordering10" value="10">Ganancia/pérdida realizada</option>
+            </select>
+            <select id="orderTotalVolumes2">
+                <option id="ascendingASC" value="ASC">ASC</option>
+                <option id="descendingDESC" value="DESC">DESC</option>
+            </select>
+            <button class="btn btn-info" type="button" onclick="order();">Ordenar</button>
+        </div>
         <table id="transactions">
             <thead>
                 <th>Moneda</th>
@@ -56,6 +73,21 @@
                   };
                   var chart = new google.visualization.BarChart(document.getElementById('volumenesTotales'));
                   chart.draw(data, options);
+            }
+            $(document).ready(function(){
+                var url = window.location.pathname;
+                if (url.split("/").slice(1)[2]){
+                    var ordering = url.split("/").slice(1)[2];
+                    var ascending = url.split("/").slice(1)[3];
+                    $("#ordering"+ordering).prop("selected", true);
+                    $("#ascending"+ascending).prop("selected", true);
+                }
+            });
+            function order(){
+                var order_criteria = $("#orderTotalVolumes").val();
+                var order_ascending = $("#orderTotalVolumes2").val();
+                url = "{% url 'total_volumes' %}";
+                window.location.href=url+"/"+order_criteria+"/"+order_ascending;
             }
           </script>
     </div>

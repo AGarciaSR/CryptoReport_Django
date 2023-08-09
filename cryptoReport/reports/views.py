@@ -3,7 +3,7 @@ from django.db.models import Sum
 from django.contrib.auth.models import User
 from transactions.models import Coin, Exchange, Transaction, RawTransaction
 
-def total_volumes(request):
+def total_volumes(request, ordering="10", ascending="DESC"):
     # Dividir la RawQuery en varias líneas para una mejor comprensión
     query = "SELECT 1 as id, symbol, pair_a_name_id, SUM(CASE WHEN t_type = 'buy' THEN mount_a ELSE 0 END) as mount_buy,"
     query += "SUM(CASE WHEN t_type = 'buy' THEN 1 ELSE 0 END) as num_buy,"
@@ -14,7 +14,7 @@ def total_volumes(request):
     query += "(SUM(CASE WHEN t_type = 'sell' THEN order_value ELSE 0 END) - sum(CASE WHEN t_type = 'buy' THEN order_value ELSE 0 END)) as gainloss "
     query += "FROM transactions_transaction JOIN transactions_coin ON transactions_transaction.pair_a_name_id = transactions_coin.name "
     query += "WHERE transactions_transaction.user_id_id = "+str(request.user.id)
-    query += " GROUP BY pair_a_name_id, symbol ORDER BY gainloss DESC"
+    query += f" GROUP BY pair_a_name_id, symbol ORDER BY {ordering} {ascending}"
     volumes = Transaction.objects.raw(query)
     num_coins = Transaction.objects.only("pair_a_name").distinct("pair_a_name")
     max_volume = Transaction.objects.raw("SELECT * FROM transactions_transaction WHERE order_value = (SELECT MAX(order_value) FROM transactions_transaction WHERE transactions_transaction.user_id_id = "+str(request.user.id)+")")
@@ -23,7 +23,9 @@ def total_volumes(request):
     context = {
         "volumes": volumes,
         "n_coins": len(num_coins),
-        "max_volume": max_volume
+        "max_volume": max_volume,
+        "ordering": ordering,
+        "ascending": ascending
     }
     return render(request, "total_volumes.html", context)
 
